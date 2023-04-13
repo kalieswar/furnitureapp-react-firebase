@@ -5,12 +5,14 @@ const loginSlice = createSlice({
     initialState:{
         loading:true,
         isAuthenticated:false,
+        error:"",
+        errorMsg:""
     },
     reducers:{
         loginRequest(state, action){
             return{
                 ...state,
-                loading: true,
+                loading: true
             }
         },
         loginSuccess(state, action){
@@ -33,12 +35,32 @@ const loginSlice = createSlice({
             isAuthenticated: false
             }
 
+          },
+          signupReq(state, action){
+            return{
+                ...state,
+                loading: true
+            }
+          },
+          signupSuccess(state,action){
+            return{
+                loading: false, 
+                isAuthenticated: true,
+                user: action.payload
+            }
+          },
+          signupFail(state,action){
+            return{
+                ...state,
+                loading: false,
+                errorMsg: action.payload
+            }
           }
     }
 });
 
 const { actions, reducer} = loginSlice;
 
-export const{loginRequest,loginSuccess,loginFail, logOut, clearError}= actions;
+export const{loginRequest,loginSuccess,loginFail, logOut, signupReq,signupSuccess,signupFail}= actions;
 
 export default reducer;

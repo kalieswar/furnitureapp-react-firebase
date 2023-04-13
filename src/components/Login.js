@@ -27,10 +27,8 @@ export const Login = () => {
     dispatch(login({email, password} ))
     setData({email,password})
   }
-  console.log(data);
   useEffect(() => {
     if (isAuthenticated) {
-      localStorage.setItem('authToken', JSON.stringify(data));
       navigate('/Home')
       setError(false)
     }
@@ -39,7 +37,7 @@ export const Login = () => {
       setError(true)
     }
 
-  }, [ isAuthenticated,data, navigate])
+  }, [ isAuthenticated,data, navigate, errorData])
 
   useEffect(() => {
     setTimeout(() => {
@@ -79,7 +77,7 @@ export const Login = () => {
                 <button className='btn btn-primary form-control rounded px-3 mt-3'>Sign In</button>
               </div>
             </form>
-            {error && (
+
               <Snackbar open={error} autoHideDuration={1000} anchorOrigin={{
                 horizontal: 'center',
                 vertical: 'top'
@@ -89,7 +87,7 @@ export const Login = () => {
                   {errorMsg}
                 </Alert>
               </Snackbar>
-            )}
+          
 
           </div>
         </div>

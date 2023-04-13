@@ -47,7 +47,6 @@ function Product() {
         setProduct(results)
       })
   }, [])
-  console.log(product);
 
 
 
@@ -60,7 +59,7 @@ function Product() {
     if (open) {
       setTimeout(() => {
         setOpen(false)
-      }, 2000)
+      }, 4000)
     }
   })
 
@@ -83,7 +82,7 @@ function Product() {
                 <Card.Body>
                   <Card.Title className='text-center'>{product.productName}</Card.Title>
                   <Card.Text className='text-center'>
-                    Price {product.price}
+                    Price ${product.price}
                   </Card.Text>
                   <Button variant="primary" className='padbtn'>Buy Now</Button>
                   {/* <Button variant="primary" className='padbtn mt-2' onClick={()=>addtoCart(product.id, product.productName,product.price, product.img, product.quantity)}>Add cart </Button> */}

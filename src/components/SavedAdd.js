@@ -35,10 +35,12 @@ const SavedAdd = () => {
     const homeHandler = (e) => {
         e.preventDefault();
         localStorage.setItem('home-info', JSON.stringify(homeInfo))
+        setSho(false)
     }
     const ofcHandler = (e) => {
         e.preventDefault();
         localStorage.setItem('office-info', JSON.stringify(ofcInfo))
+        setShow(false)
     }
     const homeChange = (e) => {
         const { name, value } = e.target;

@@ -12,7 +12,7 @@ import OrderDetails from './components/OrderDetails';
 import SignUp from './components/SignUp';
 import Profile from './components/Profile';
 import SavedAdd from './components/SavedAdd';
-
+import ProtectedRoute from './components/route/ProtectedRoute';
 
 function App() {
   return (
@@ -22,14 +22,14 @@ function App() {
       <Routes>
         <Route path='/Home' element={<Product/>}/>
         <Route path='/product/:id' element={<ProductDetail/>}/>
-        <Route path='/cart'element={<Cart/>}/>
+        <Route path='/cart'element={<ProtectedRoute><Cart/></ProtectedRoute>}/>
         <Route path='/' element={<Login/>}/>
-        <Route path="/shipping" element={<Address/>}/>
-        <Route path='/orderdetails' element={<OrderDetails/>}/>
+        <Route path="/shipping" element={<ProtectedRoute><Address/></ProtectedRoute>}/>
+        <Route path='/orderdetails' element={<ProtectedRoute><OrderDetails/></ProtectedRoute>}/>
         <Route path='*' element={<Error/>}/>
         <Route path='/signup' element={<SignUp/>}/>
-        <Route path='/profile' element={<Profile/>}/>
-        <Route path='/savedaddress' element={<SavedAdd/>}/>
+        <Route path='/profile' element={<ProtectedRoute><Profile/></ProtectedRoute>}/>
+        <Route path='/savedaddress' element={<ProtectedRoute><SavedAdd/></ProtectedRoute>}/>
       </Routes>
 
       <Footer />

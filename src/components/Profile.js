@@ -1,11 +1,21 @@
 import { Row } from "react-bootstrap";
 import Col from "react-bootstrap/Col";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Container } from "react-bootstrap";
+import { useDispatch } from "react-redux";
+import { logOut } from '../slices/loginSlice';
 
 function Profile() {
     const { user } = useSelector(state => state.loginState)
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+    const handleClick = ()=>{
+
+        localStorage.removeItem('authToken')
+        navigate('/')
+        dispatch(logOut())
+      }
 
     return (
         <Container>
@@ -21,6 +31,7 @@ function Profile() {
                     <h4>Joined</h4>
                     <p>{user.CreatedAt}</p>
                     <Link to="/savedaddress" className="btn btn-primary">My Address</Link>
+                    <button className="btn btn-warning mt-3 px-4" onClick={handleClick}>Log Out</button>
                 </Col>
             </Row>
         </Container>
